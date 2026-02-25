@@ -1,0 +1,52 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}
+    Post List
+{% endblock title %}
+    
+
+{% block content %}
+    <div class="container mt-4">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>All Posts</h2>
+        <a href="{% url 'post_form' %}" class="btn btn-primary d-flex align-items-center">+ New</a>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mb-4">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" class="card-img-top" 
+                                 style="height: 180px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ post.title }}</h5>
+                            <p class="card-text text-muted small">
+                                By Baishant Pachhai . 
+                                {{ post.created_at|date:"M d, Y" }}
+                            </p>
+                            <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
+                            <a href="{% url 'post_details' %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
+                                Read
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <p class="text-muted">No posts yet.</p>
+            <a href="{% url 'post_form' %}" class="btn btn-primary">Create First Post</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
+    
