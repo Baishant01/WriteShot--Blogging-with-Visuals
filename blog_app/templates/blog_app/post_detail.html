@@ -5,6 +5,29 @@
     
 
 {% block content %}
-    This is a post details page.
+    <div class="container mt-4">
+        <!-- Back Button -->
+        <a href="{% url 'post_list' %}" class="btn btn-light mb-4">
+            ← Back
+        </a>
+        
+        {% if post %}
+            <div class="card p-4">
+                <div class="card-title text-center">
+                    <img src="{{post.image.url}}" style="height:400px;" alt="">
+                    <br>
+                    <br>
+                    <h2>{{post.title}}</h2>
+                </div>
+                <div class="card-body ">
+                    <p class="card-text">By Baishant Pachhai . {{post.created_at|date:"M d, Y"}}</p>
+                    <p>{{post.content}}</p>
+
+                </div>
+            </div>
+        {% endif %}
+            
+    </div>
+
 {% endblock content %}
     

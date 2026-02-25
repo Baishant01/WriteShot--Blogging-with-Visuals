@@ -33,7 +33,7 @@
                                 {{ post.created_at|date:"M d, Y" }}
                             </p>
                             <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
-                            <a href="{% url 'post_details' %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
+                            <a href="{% url 'post_details' post.pk %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
                                 Read
                             </a>
                         </div>
