@@ -30,16 +30,38 @@ def post_create (request):
         form = PostForm()
     return render (request, 'blog_app/post_form.html', {'form':form})
 
+def post_edit (request, pk):
+    post_obj = get_object_or_404(Post, pk=pk)
+    old_image = post_obj.image
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post_obj)
+        if form.is_valid():
+            updated_post = form.save()
+            if 'image' in request.FILES:
+                if old_image and old_image != updated_post.image:
+                    old_image.delete(save=False)
+                    
+            messages.success(request, 'Post updated successfully!')
+            return redirect('post_details', pk=post_obj.pk)
+        else:
+            messages.error(request, 'Error while updating post...')
+    else:
+        form = PostForm(instance=post_obj)
+    
+    return render (request, 'blog_app/post_form.html', {
+        'form':form,
+        'post':post_obj
+    })
 def post_delete (request, pk):
     post_obj = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         # To delete images from media folder if available
         if post_obj.image:
-            post_obj.image.delete()
+            post_obj.image.delete(save=False)
             
         # To delete selected post object from database
         post_obj.delete()
         messages.success(request, 'Post deletion successful!')
-        return render ('post_list')
+        return redirect ('post_list')
     return render (request, 'blog_app/post_confirm_delete.html', {'post_obj':post_obj})
         
