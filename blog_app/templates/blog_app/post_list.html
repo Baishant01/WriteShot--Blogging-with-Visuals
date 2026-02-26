@@ -8,7 +8,7 @@
     <div class="container mt-4">
     <div class="d-flex justify-content-between mb-4">
         <h2>All Posts</h2>
-        <a href="{% url 'post_form' %}" class="btn btn-primary d-flex align-items-center">+ New</a>
+        <a href="{% url 'post_create' %}" class="btn btn-primary d-flex align-items-center">+ New</a>
     </div>
 
     {% if messages %}
@@ -44,7 +44,7 @@
     {% else %}
         <div class="text-center py-5">
             <p class="text-muted">No posts yet.</p>
-            <a href="{% url 'post_form' %}" class="btn btn-primary">Create First Post</a>
+            <a href="{% url 'post_create' %}" class="btn btn-primary">Create First Post</a>
         </div>
     {% endif %}
 </div>

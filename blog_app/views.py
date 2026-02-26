@@ -17,7 +17,7 @@ def post_details (request, pk):
         messages.error(request, 'Error while fetching details...')
     return render (request, 'blog_app/post_list.html')
 
-def post_form (request):
+def post_create (request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -29,3 +29,17 @@ def post_form (request):
     else:
         form = PostForm()
     return render (request, 'blog_app/post_form.html', {'form':form})
+
+def post_delete (request, pk):
+    post_obj = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        # To delete images from media folder if available
+        if post_obj.image:
+            post_obj.image.delete()
+            
+        # To delete selected post object from database
+        post_obj.delete()
+        messages.success(request, 'Post deletion successful!')
+        return render ('post_list')
+    return render (request, 'blog_app/post_confirm_delete.html', {'post_obj':post_obj})
+        
