@@ -5,7 +5,7 @@
     
 
 {% block content %}
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5">
         <!-- Back Button -->
         <a href="{% url 'post_list' %}" class="btn btn-light mb-4">
             ← Back
@@ -16,7 +16,7 @@
                 <div class="card-title text-center">
                     
                     {% if post.image and post.image.url %}
-                        <img src="{{post.image.url}}" style="height:400px;" alt="">
+                        <img src="{{post.image.url}}" style="max-height: 400px; width: auto;" alt="">
                     {% endif %}
                         
                     <br>
@@ -27,8 +27,8 @@
                     <p class="card-text">By Baishant Pachhai . {{post.created_at|date:"M d, Y"}}</p>
                     <p>{{post.content}}</p>
                     <div class="d-flex gap-4">
-                        <a href="{% url 'post_edit' post.pk %}" class="btn btn-primary w-100">Edit</a>
-                        <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger w-100">Delete</a>
+                        <a href="{% url 'post_edit' post.pk post.title %}" class="btn btn-primary w-100">Edit</a>
+                        <a href="{% url 'post_delete' post.pk post.title %}" class="btn btn-danger w-100">Delete</a>
                     </div>
                 </div>
             </div>

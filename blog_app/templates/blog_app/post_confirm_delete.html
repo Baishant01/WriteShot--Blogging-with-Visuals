@@ -5,20 +5,24 @@
     
 
 {% block content %}
-    <div class="container d-flex justify-content-center align-items-center" style="height:90vh;">
+    <div class="container d-flex justify-content-center align-items-center">
         <div class="card p-4">
             
             {% if post_obj %}
                 <h1 class="bg-danger text-center text-white rounded-2">Confirm Deletion</h1>
                 <br><br>
-                <img src="{{post_obj.image.url}}" height=200 alt="" style="object-fit:contain;">
+                
+                {% if post_obj.image and post_obj.image.url %}
+                    <img src="{{post_obj.image.url}}" height=200 alt="" style="object-fit:contain;">
+                {% endif %}
+                    
                 <br><br>
                 <h5>Do you want to confirm your deletion?</h1>
                 <p class="alert alert-warning text-center">This action cannot be undone! </p>
                 <form action="" method="post" class="form d-flex gap-4">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger flex-fill">Confirm Delete</button>
-                    <a href="{% url 'post_details' post_obj.pk %}" class="btn btn-outline-secondary flex-fill">Cancel</a>
+                    <a href="{% url 'post_details' post_obj.pk post_obj.title %}" class="btn btn-outline-secondary flex-fill">Cancel</a>
                 </form>
             {% endif %}
                 

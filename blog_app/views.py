@@ -2,20 +2,23 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
 from .models import Post
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def post_list (request):
-    posts = Post.objects.all().order_by('-created_at')
-    return render (request, 'blog_app/post_list.html', {'posts':posts})
+    posts = Post.objects.all().order_by('created_at')
+    paginator = Paginator(posts, 6)
+    page_no = request.GET.get('page')
+    page_obj = paginator.get_page(page_no)
+    return render (request, 'blog_app/post_list.html', {\
+        'page_obj':page_obj
+        })
 
-def post_details (request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if post:
-        return render (request, 'blog_app/post_detail.html', {'post':post})
-    else:
-        messages.error(request, 'Error while fetching details...')
-    return render (request, 'blog_app/post_list.html')
+def post_details (request, pk, title):
+    post = get_object_or_404(Post, pk=pk, title=title)
+
+    return render (request, 'blog_app/post_detail.html', {'post':post})
 
 def post_create (request):
     if request.method == "POST":
@@ -30,8 +33,8 @@ def post_create (request):
         form = PostForm()
     return render (request, 'blog_app/post_form.html', {'form':form})
 
-def post_edit (request, pk):
-    post_obj = get_object_or_404(Post, pk=pk)
+def post_edit (request, pk, title):
+    post_obj = get_object_or_404(Post, pk=pk, title=title)
     old_image = post_obj.image
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES, instance=post_obj)
@@ -42,7 +45,7 @@ def post_edit (request, pk):
                     old_image.delete(save=False)
                     
             messages.success(request, 'Post updated successfully!')
-            return redirect('post_details', pk=post_obj.pk)
+            return redirect('post_details', pk=post_obj.pk, title=post_obj.title)
         else:
             messages.error(request, 'Error while updating post...')
     else:
@@ -52,8 +55,8 @@ def post_edit (request, pk):
         'form':form,
         'post':post_obj
     })
-def post_delete (request, pk):
-    post_obj = get_object_or_404(Post, pk=pk)
+def post_delete (request, pk, title):
+    post_obj = get_object_or_404(Post, pk=pk, title=title)
     if request.method == 'POST':
         # To delete images from media folder if available
         if post_obj.image:

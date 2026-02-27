@@ -13,6 +13,11 @@
     <div class="card p-2">
         <form action="" class="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            {% if form.instance.pk %}
+                    <p class="text-center bg-primary text-white fw-bold">Edit Post</p>
+            {% else %}
+                    <p class="text-center bg-primary text-white fw-bold">Create New Post</p>
+            {% endif %}
             {{form.as_p}}
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

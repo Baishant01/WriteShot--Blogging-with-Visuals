@@ -17,9 +17,9 @@
         {% endfor %}
     {% endif %}
 
-    {% if posts %}
+    {% if page_obj %}
         <div class="row">
-            {% for post in posts %}
+            {% for post in page_obj %}
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         {% if post.image %}
@@ -33,7 +33,7 @@
                                 {{ post.created_at|date:"M d, Y" }}
                             </p>
                             <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
-                            <a href="{% url 'post_details' post.pk %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
+                            <a href="{% url 'post_details' post.pk post.title %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
                                 Read
                             </a>
                         </div>
@@ -48,5 +48,8 @@
         </div>
     {% endif %}
 </div>
+
+{% include 'blog_app/includes/pagination.html' %}
+
 {% endblock content %}
     

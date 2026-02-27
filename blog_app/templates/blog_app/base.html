@@ -3,57 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {% block title %}
-            Document
-        {% endblock title %}
-    </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>{% block title %}WriteShot{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing:border-box;
+        :root {
+            --navbar-height: 70px;
+            --footer-height: 60px;
         }
-        body{
-            width: 100%;
-        }
-        .nav{
-            margin: 0;
-            margin-inline:auto;
-            height: 10vh;
-            display: flex;
-            justify-content: space-between;
-            align-items:baseline;
-        }
-        #logo{
-            text-decoration:none;
-            font-size:3rem;
-            color:white;
-        }
-        nav ul{
-            display:flex;
-            justify-content:center;
-            align-items:baseline;
-            list-style-type: none;
-            gap:20px;
+        
+        body {
+            padding-top: var(--navbar-height);
+            padding-bottom: var(--footer-height);
         }
 
-        nav ul li a{
-            text-decoration:none;
-            color:white;
-            font-weight:bold;
+        .bg-brand {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
     </style>
-
-
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
+    
     {% include 'blog_app/includes/navbar.html' %}
-    {% block content %}
-        
-    {% endblock content %}
-        
+    
+
+    <main class="container my-4 flex-grow-1">
+        {% block content %}{% endblock %}
+    </main>
+    
+    {% include 'blog_app/includes/footer.html' %}
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
