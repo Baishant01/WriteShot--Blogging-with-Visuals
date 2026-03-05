@@ -1,2 +1,6 @@
+media/
 media/post_images/
+
 db.sqlite3
+
+venv/

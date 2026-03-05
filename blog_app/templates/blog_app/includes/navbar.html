@@ -6,7 +6,14 @@
         </a>
         
         
-        <ul class="d-flex gap-4 list-unstyled mb-0">
+        <ul class="d-flex gap-4 list-unstyled mb-0 d-flex align-items-center">
+            
+            {% if user.is_authenticated %}
+                <li>
+                    <img src="{{user.profile.profile_pic.url}}" alt="" style="border-radius:50%; height:50px; width:50px;%">
+                </li>
+            {% endif %}
+                
             <li>
                 <a href="{% url 'post_list' %}" 
                    class="text-white fw-bold text-decoration-none">

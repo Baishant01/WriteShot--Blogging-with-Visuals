@@ -4,18 +4,18 @@
             
             {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a href="?page=1" class="page-link">First</a>
+                    <a href="?page=1" class="page-link"><<</a>
                 </li>
                 <li class="page-item">
-                    <a href="?page={{page_obj.previous_page_number}}" class="page-link">Previous</a>
+                    <a href="?page={{page_obj.previous_page_number}}" class="page-link"><</a>
                 </li>
             {% else %}
                 
                 <li class="page-item disabled">
-                    <span class="page-link">First</span>
+                    <span class="page-link"><<</span>
                 </li>
                 <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
+                    <span class="page-link"><</span>
                 </li>
             {% endif %}
             
@@ -33,18 +33,18 @@
             
             {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a href="?page={{page_obj.next_page_number}}" class="page-link">Next</a>
+                    <a href="?page={{page_obj.next_page_number}}" class="page-link">></a>
                 </li>
                 <li class="page-item">
-                    <a href="?page={{page_obj.paginator.num_pages}}" class="page-link">Last</a>
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="page-link">>></a>
                 </li>
             {% else %}
                 
                 <li class="page-item disabled">
-                    <span class="page-link">Next</span>
+                    <span class="page-link">></span>
                 </li>
                 <li class="page-item disabled">
-                    <span class="page-link">Last</span>
+                    <span class="page-link">>></span>
                 </li>
             {% endif %}
                 
