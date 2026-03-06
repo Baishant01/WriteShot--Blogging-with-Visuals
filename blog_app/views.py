@@ -23,6 +23,14 @@ def post_details (request, pk, title):
     return render (request, 'blog_app/post_detail.html', {'post':post})
 
 @login_required
+def my_posts_view (request):
+    posts = Post.objects.filter(author=request.user)
+    paginator = Paginator(posts, 9)
+    page_no = request.GET.get('page')
+    page_obj = paginator.get_page(page_no)
+    return render (request, 'blog_app/my_posts.html', {'page_obj':page_obj})
+
+@login_required
 def post_create (request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)

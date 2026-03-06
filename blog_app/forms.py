@@ -4,7 +4,7 @@ from .models import Post
 class PostForm (forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ['created_at']
+        exclude = ['created_at', 'author']
         labels= {
             'is_private':'Do you want your post private?'
         }
