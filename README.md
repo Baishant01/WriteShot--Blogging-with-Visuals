@@ -154,33 +154,6 @@ Pillow>=9.0.0
 - **Registered Users** - Can create posts and manage their own posts
 - **Admin Users** - Full access to admin panel
 
-## 🔒 Environment Variables
-
-Create a `.env` file for sensitive data:
-
-```env
-SECRET_KEY=your_django_secret_key
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-```
-
-## 🚀 Deployment
-
-### Deploy to PythonAnywhere
-1. Create account on PythonAnywhere
-2. Upload your code
-3. Set up virtual environment
-4. Configure WSGI file
-5. Set up static/media files
-
-### Deploy to Heroku
-```bash
-heroku create your-app-name
-heroku config:set SECRET_KEY=your_secret_key
-git push heroku main
-heroku run python manage.py migrate
-```
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -188,10 +161,6 @@ heroku run python manage.py migrate
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License.
 
 ## 📧 Contact
 
@@ -215,7 +184,5 @@ Project Link: [https://github.com/yourusername/writeshot](https://github.com/you
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
-- [ ] Improve mobile responsiveness
-- [ ] Add social sharing
-- [ ] Add rich text editor
-- [ ] Email notifications
+
+
