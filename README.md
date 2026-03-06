@@ -164,8 +164,9 @@ Pillow>=9.0.0
 
 ## 📧 Contact
 
-Your Name - baishant005@gmail.com
-Project Link: [https://github.com/yourusername/writeshot](https://github.com/yourusername/writeshot)
+My Email - baishant005@gmail.com
+--
+Project Link: [https://github.com/yourusername/writeshot](https://github.com/Baishant01/WriteShot--Blogging-with-Visuals.git)
 
 ## 🙏 Acknowledgments
 
@@ -184,6 +185,7 @@ Project Link: [https://github.com/yourusername/writeshot](https://github.com/you
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
+
 
 
 
