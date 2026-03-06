@@ -24,11 +24,17 @@
                     <h2>{{post.title}}</h2>
                 </div>
                 <div class="card-body ">
-                    <p class="card-text">By Baishant Pachhai . {{post.created_at|date:"M d, Y"}}</p>
+                    <p class="card-text">By {{post.author}} . {{post.created_at|date:"M d, Y"}}</p>
                     <p>{{post.content}}</p>
                     <div class="d-flex gap-4">
-                        <a href="{% url 'post_edit' post.pk post.title %}" class="btn btn-primary w-100">Edit</a>
-                        <a href="{% url 'post_delete' post.pk post.title %}" class="btn btn-danger w-100">Delete</a>
+                        
+                        {% if user.is_authenticated and user == post.author %}
+                            <a href="{% url 'post_edit' post.pk post.title %}" class="btn btn-primary w-100">Edit</a>
+                            <a href="{% url 'post_delete' post.pk post.title %}" class="btn btn-danger w-100">Delete</a>
+                        {% elif user.is_authenticated and user != post.author %}
+                            <p class="alert alert-primary mx-auto"><small>Authors of this post are only able to edit or delete it.</small></p>
+                        {% endif %}
+                            
                     </div>
                 </div>
             </div>
