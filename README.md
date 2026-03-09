@@ -168,6 +168,7 @@ Pillow>=9.0.0
 - **Registered Users** - Can create posts and manage their own posts
 - **Admin Users** - Full access to admin panel
 
+<<<<<<< HEAD
 ## 🔒 Environment Variables
 
 Create a `.env` file for sensitive data:
@@ -178,25 +179,6 @@ DEBUG=True
 DATABASE_URL=sqlite:///db.sqlite3
 ```
 
-## 🚀 Deployment
-
-### Deploy to PythonAnywhere
-
-1. Create account on PythonAnywhere
-2. Upload your code
-3. Set up virtual environment
-4. Configure WSGI file
-5. Set up static/media files
-
-### Deploy to Heroku
-
-```bash
-heroku create your-app-name
-heroku config:set SECRET_KEY=your_secret_key
-git push heroku main
-heroku run python manage.py migrate
-```
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -205,14 +187,11 @@ heroku run python manage.py migrate
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License.
-
 ## 📧 Contact
 
-Your Name - your.email@example.com
-Project Link: [https://github.com/yourusername/writeshot](https://github.com/yourusername/writeshot)
+My Email - baishant005@gmail.com
+--
+Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baishant01/WriteShot--Blogging-with-Visuals.git)
 
 ## 🙏 Acknowledgments
 
@@ -231,7 +210,8 @@ Project Link: [https://github.com/yourusername/writeshot](https://github.com/you
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
-- [ ] Improve mobile responsiveness
-- [ ] Add social sharing
-- [ ] Add rich text editor
-- [ ] Email notifications
+
+
+
+
+
