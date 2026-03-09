@@ -171,17 +171,6 @@ Pillow>=9.0.0
 - **Registered Users** - Can create posts and manage their own posts
 - **Admin Users** - Full access to admin panel
 
-<<<<<<< HEAD
-## 🔒 Environment Variables
-
-Create a `.env` file for sensitive data:
-
-```env
-SECRET_KEY=your_django_secret_key
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-```
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -213,6 +202,7 @@ Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baish
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
+
 
 
 
