@@ -16,7 +16,7 @@ A full-featured blog application built with Django that allows users to create, 
 ## Workflow Diagrams
 
 ### All Posts
-  ![All posts screenshot]("Demo Workflow Screenshots/All_Posts.png")
+  ![All posts screenshot](Demo%20Workflow%20Screenshots/All_Posts.png)
   
 - we'll post it soon
 
@@ -213,6 +213,7 @@ Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baish
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
+
 
 
 
