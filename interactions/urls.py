@@ -1,0 +1,6 @@
+from django.urls import path
+from .views import add_comment_view
+
+urlpatterns = [
+    path("post/<int:id>/comment/add/", add_comment_view, name="add_comment"),
+]

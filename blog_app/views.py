@@ -5,6 +5,9 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
+from interactions.models import Comment
+from interactions.forms import CommentForm
+
 # Create your views here.
 
 
@@ -20,7 +23,14 @@ def post_details(request, pk, title):
     post = get_object_or_404(Post, pk=pk, title=title)
     if post.is_private and post.author != request.user:
         return redirect("post_list")
-    return render(request, "blog_app/post_detail.html", {"post": post})
+
+    comments = post.comments.all()  # using related_name here
+    form = CommentForm()
+    return render(
+        request,
+        "blog_app/post_detail.html",
+        {"post": post, "comments": comments, "form": form},
+    )
 
 
 @login_required

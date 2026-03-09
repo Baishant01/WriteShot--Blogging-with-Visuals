@@ -59,13 +59,22 @@
                                     <a href="{% url 'post_details' post.pk post.title %}"
                                        class="btn btn-sm btn-outline-primary w-100 fw-bold">Read</a>
                                     <div class="likecomment-container mt-2 d-flex justify-content-between gap-4">
-                                        <button type="submit" class="btn btn-outline-secondary flex-fill">
-                                            <i class="bi bi-hand-thumbs-up"></i>Like
-                                        </button>
-                                        <a href="{% url 'my_post_list' %}"
-                                           class="btn btn-outline-secondary flex-fill">
-                                            <i class="bi bi-chat-dots"></i>
-                                        Comment</a>
+                                        {% if user.is_authenticated %}
+                                            <button type="submit" class="btn btn-outline-secondary flex-fill">
+                                                <i class="bi bi-hand-thumbs-up"></i>Like
+                                            </button>
+                                            <a href="{% url 'post_details' post.pk post.title %}#comments"
+                                               class="btn btn-outline-secondary flex-fill">
+                                                <i class="bi bi-chat-dots"></i>
+                                            Comment</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}" class="btn btn-outline-secondary flex-fill">
+                                                <i class="bi bi-hand-thumbs-up"></i>Like
+                                            </a>
+                                            <a href="{% url 'login' %}" class="btn btn-outline-secondary flex-fill">
+                                                <i class="bi bi-chat-dots"></i>
+                                            Comment</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
