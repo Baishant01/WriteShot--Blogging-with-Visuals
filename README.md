@@ -39,8 +39,8 @@ A full-featured blog application built with Django that allows users to create, 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/writeshoot.git
-cd writeshoot
+git clone https://github.com/Baishant01/WriteShot--Blogging-with-Visuals.git
+cd WriteShot--Blogging-with-Visuals/
 ```
 
 ### 2. Create and activate virtual environment
@@ -202,6 +202,7 @@ Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baish
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
+
 
 
 
