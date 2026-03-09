@@ -1,56 +1,78 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block title %}
     Post List
 {% endblock title %}
-    
-
 {% block content %}
     <div class="container mt-4">
-    <div class="d-flex justify-content-between mb-4">
-        <h2>All Posts</h2>
-        <a href="
-        {% if user.is_authenticated %}
-            {% url 'post_create' %}
-        {% else %}
-            {% url 'login' %}
-        {% endif %}
-        " class="btn btn-primary d-flex align-items-center">+ New</a>
-    </div>
-
-    {% if page_obj %}
-        <div class="row">
-            {% for post in page_obj %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        {% if post.image %}
-                            <img src="{{ post.image.url }}" class="card-img-top" 
-                                 style="height: 180px; object-fit: cover;">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ post.title }}</h5>
-                            <p class="card-text text-muted small">
-                                By {{post.author}} . 
-                                {{ post.created_at|date:"M d, Y" }}
-                            </p>
-                            <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
-                            <a href="{% url 'post_details' post.pk post.title %}" class="btn btn-sm btn-outline-primary w-100 fw-bold">
-                                Read
-                            </a>
+        <div class="d-flex justify-content-between mb-4">
+            <h2>All Posts</h2>
+            <a href=" {% if user.is_authenticated %} {% url 'post_create' %} {% else %} {% url 'login' %} {% endif %} "
+               class="btn btn-primary d-flex align-items-center">+ New</a>
+        </div>
+        {% if page_obj %}
+            <div class="row">
+                {% for post in page_obj %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="height:550px;">
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}"
+                                     height="180"
+                                     width="auto"
+                                     alt=""
+                                     class="card-img-top"
+                                     style="object-fit: cover">
+                            {% endif %}
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="upper-card-body">
+                                    <h5 class="card-title text-center">{{ post.title }}</h5>
+                                    <hr>
+                                    <div class="card-text d-flex align-items-center gap-4">
+                                        <img src="{% if post.author.profile.profile_pic %} {{ post.author.profile.profile_pic.url }} {% else %} {% static 'images/DefaultProfilePic.png' %} {% endif %}"
+                                             height="40"
+                                             width="40"
+                                             alt="{{ post.author.username }}"
+                                             style="border-radius:50%;
+                                                    margin-left:8px;
+                                                    object-fit: cover">
+                                        <div>
+                                            By {{ post.author }}
+                                            <br>
+                                            {{ post.created_at|date:"M d, Y" }}
+                                        </div>
+                                        {% if post.is_private %}
+                                            <div class="d-flex align-items-center justify-content-end flex-fill ">
+                                                <small class="alert alert-info">Private</small>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <hr>
+                                    <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
+                                </div>
+                                <div class="lower-card-body">
+                                    <a href="{% url 'post_details' post.pk post.title %}"
+                                       class="btn btn-sm btn-outline-primary w-100 fw-bold">Read</a>
+                                    <div class="likecomment-container mt-2 d-flex justify-content-between gap-4">
+                                        <button type="submit" class="btn btn-outline-secondary flex-fill">
+                                            <i class="bi bi-hand-thumbs-up"></i>Like
+                                        </button>
+                                        <a href="{% url 'my_post_list' %}"
+                                           class="btn btn-outline-secondary flex-fill">
+                                            <i class="bi bi-chat-dots"></i>
+                                        Comment</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="text-center py-5">
-            <p class="text-muted">No posts yet.</p>
-            <a href="{% url 'post_create' %}" class="btn btn-primary">Create First Post</a>
-        </div>
-    {% endif %}
-</div>
-
-{% include 'blog_app/includes/pagination.html' %}
-
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <p class="text-muted">No posts yet.</p>
+                <a href="{% url 'post_create' %}" class="btn btn-primary">Create First Post</a>
+            </div>
+        {% endif %}
+    </div>
+    {% include "blog_app/includes/pagination.html" %}
 {% endblock content %}
-    

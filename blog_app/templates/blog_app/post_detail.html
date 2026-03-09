@@ -1,46 +1,63 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
     Post Details
 {% endblock title %}
-    
-
 {% block content %}
     <div class="container mt-4 mb-5">
         <!-- Back Button -->
         <a href="{% url 'post_list' %}" class="btn btn-light mb-4">
-            ← Back
+            <i class="bi bi-arrow-left"></i>
+            Back
         </a>
-        
         {% if post %}
             <div class="card p-4">
                 <div class="card-title text-center">
-                    
                     {% if post.image and post.image.url %}
-                        <img src="{{post.image.url}}" style="max-height: 400px; width: auto;" alt="">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ post.image.url }}"
+                                 style="max-height: 400px;
+                                        width: auto;
+                                        max-width:90%"
+                                 alt="">
+                        </div>
                     {% endif %}
-                        
                     <br>
                     <br>
-                    <h2>{{post.title}}</h2>
+                    <h2>{{ post.title }}</h2>
                 </div>
-                <div class="card-body ">
-                    <p class="card-text">By {{post.author}} . {{post.created_at|date:"M d, Y"}}</p>
-                    <p>{{post.content}}</p>
+                <hr>
+                <div class="card-body mt-0 pt-0">
+                    <div class="card-text d-flex align-items-center gap-4">
+                        <img src="{% if post.author.profile.profile_pic %} {{ post.author.profile.profile_pic.url }} {% else %} {% static 'images/DefaultProfilePic.png' %} {% endif %}"
+                             height="40"
+                             width="40"
+                             alt="{{ post.author.username }}"
+                             style="border-radius:50%;
+                                    margin-left:8px;
+                                    object-fit: cover">
+                        <div>
+                            <span>By {{ post.author }}</span>
+                            <br>
+                            <span>{{ post.created_at|date:"M d, Y" }}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <p>{{ post.content|linebreaks }}</p>
                     <div class="d-flex gap-4">
-                        
                         {% if user.is_authenticated and user == post.author %}
-                            <a href="{% url 'post_edit' post.pk post.title %}" class="btn btn-primary w-100">Edit</a>
-                            <a href="{% url 'post_delete' post.pk post.title %}" class="btn btn-danger w-100">Delete</a>
+                            <a href="{% url 'post_edit' post.pk post.title %}"
+                               class="btn btn-primary w-100">Edit</a>
+                            <a href="{% url 'post_delete' post.pk post.title %}"
+                               class="btn btn-danger w-100">Delete</a>
                         {% elif user.is_authenticated and user != post.author %}
-                            <p class="alert alert-primary mx-auto"><small>Authors of this post are only able to edit or delete it.</small></p>
+                            <p class="alert alert-primary mx-auto">
+                                <small>Authors of this post are only able to edit or delete it.</small>
+                            </p>
                         {% endif %}
-                            
                     </div>
                 </div>
             </div>
         {% endif %}
-            
     </div>
-
 {% endblock content %}
-    

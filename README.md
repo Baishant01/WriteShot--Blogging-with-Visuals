@@ -13,6 +13,10 @@ A full-featured blog application built with Django that allows users to create, 
 - **Pagination** - Browse posts with pagination
 - **User-specific Posts** - View your own posts separately
 
+## Workflow Diagrams
+
+- we'll post it soon
+
 ## 🚀 Tech Stack
 
 - **Backend:** Django 4.x
@@ -30,12 +34,14 @@ A full-featured blog application built with Django that allows users to create, 
 ## 🛠️ Installation
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/writeshoot.git
 cd writeshoot
 ```
 
 ### 2. Create and activate virtual environment
+
 ```bash
 # Windows
 python -m venv venv
@@ -47,26 +53,31 @@ source venv/bin/activate
 ```
 
 ### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Apply database migrations
+
 ```bash
 python manage.py migrate
 ```
 
 ### 5. Create superuser (admin)
+
 ```bash
 python manage.py createsuperuser
 ```
 
 ### 6. Run development server
+
 ```bash
 python manage.py runserver
 ```
 
 ### 7. Visit the application
+
 - Main site: http://127.0.0.1:8000/
 - Admin panel: http://127.0.0.1:8000/admin/
 
@@ -133,6 +144,7 @@ Pillow>=9.0.0
 ## 🚦 Usage
 
 ### Creating a Post
+
 1. Login to your account
 2. Click "Create Post" button
 3. Fill in title, content, and optional image
@@ -140,10 +152,12 @@ Pillow>=9.0.0
 5. Submit
 
 ### Viewing Posts
+
 - **All Posts** - Shows all public posts
 - **My Posts** - Shows your posts (both public and private)
 
 ### Managing Posts
+
 - **Edit** - Click Edit button on your post
 - **Delete** - Click Delete button on your post
 - **View** - Click Read button on any post
@@ -167,6 +181,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 ## 🚀 Deployment
 
 ### Deploy to PythonAnywhere
+
 1. Create account on PythonAnywhere
 2. Upload your code
 3. Set up virtual environment
@@ -174,6 +189,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 5. Set up static/media files
 
 ### Deploy to Heroku
+
 ```bash
 heroku create your-app-name
 heroku config:set SECRET_KEY=your_secret_key
