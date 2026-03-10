@@ -60,11 +60,15 @@
                                        class="btn btn-sm btn-outline-primary w-100 fw-bold">Read</a>
                                     <div class="likecomment-container mt-2 d-flex justify-content-between gap-4">
                                         {% if user.is_authenticated %}
-                                            <button type="submit" class="btn btn-outline-secondary flex-fill">
-                                                <i class="bi bi-hand-thumbs-up"></i>Like
-                                            </button>
+                                            <form action="{% url 'toggle_like' post.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-outline-primary">
+                                                    <i class="bi bi-hand-thumbs-up-fill"></i>
+                                                    {{ post.likes.count }} Likes
+                                                </button>
+                                            </form>
                                             <a href="{% url 'post_details' post.pk post.title %}#comments"
-                                               class="btn btn-outline-secondary flex-fill">
+                                               class="btn btn-outline-primary flex-fill">
                                                 <i class="bi bi-chat-dots"></i>
                                             Comment</a>
                                         {% else %}

@@ -35,16 +35,12 @@
                                              style="border-radius:50%;
                                                     margin-left:8px;
                                                     object-fit: cover">
-                                        <div>
+                                        <div class="flex-fill d-flex justify-content-between align-items-center">
                                             By {{ post.author }}
                                             <br>
                                             {{ post.created_at|date:"M d, Y" }}
+                                            {% if post.is_private %}<small class="alert alert-success p-2 m-0">Private</small>{% endif %}
                                         </div>
-                                        {% if post.is_private %}
-                                            <div class="d-flex align-items-center justify-content-end flex-fill ">
-                                                <small class="alert alert-info">Private</small>
-                                            </div>
-                                        {% endif %}
                                     </div>
                                     <hr>
                                     <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
@@ -56,7 +52,7 @@
                                         <button type="submit" class="btn btn-outline-secondary flex-fill">
                                             <i class="bi bi-hand-thumbs-up"></i>Like
                                         </button>
-                                        <a href="{% url 'my_post_list' %}"
+                                        <a href="{% url 'post_details' post.id post.title %}#comments"
                                            class="btn btn-outline-secondary flex-fill">
                                             <i class="bi bi-chat-dots"></i>
                                         Comment</a>

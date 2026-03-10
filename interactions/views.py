@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Comment
+from .models import Comment, Like
 from blog_app.models import Post
 from .forms import CommentForm
 from django.contrib import messages
@@ -8,6 +8,19 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # add_comment_view
+
+
+@login_required
+def toggle_like_view(request, id):
+    post = get_object_or_404(Post, id=id)
+
+    existing_like = post.likes.filter(user=request.user).first()
+
+    if existing_like:
+        existing_like.delete()
+    else:
+        post.likes.create(user=request.user)
+    return redirect("post_details", pk=post.pk, title=post.title)
 
 
 @login_required
