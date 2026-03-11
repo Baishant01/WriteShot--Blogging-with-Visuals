@@ -7,9 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-# add_comment_view
-
-
 @login_required
 def toggle_like_view(request, id):
     post = get_object_or_404(Post, id=id)
