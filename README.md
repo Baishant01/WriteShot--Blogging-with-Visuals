@@ -47,12 +47,11 @@ A full-featured blog application built with Django that allows users to create, 
 <details>
 <summary>Click to view mobile screenshots</summary>
 
-<details>
-<summary>Click to <strong>Register</strong></summary>
+
 #### Register
 
 ![Register screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/register.jpg)
-</details>
+
 
 #### Login
 
