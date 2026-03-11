@@ -13,15 +13,63 @@ A full-featured blog application built with Django that allows users to create, 
 - **Pagination** - Browse posts with pagination
 - **User-specific Posts** - View your own posts separately
 
+---
+
 ## Workflow Diagrams
 
-### All Posts
-  ![All posts screenshot](Demo%20Workflow%20Screenshots/All_Posts.png)
+### Desktop Screenshots
 
-### Post Details
-  ![Post Details screenshot](Demo%20Workflow%20Screenshots/post_details.png)
-  
-- we'll post it soon
+#### Register
+
+![Register screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/register.png)
+
+#### Login
+
+![Login screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/login.png)
+
+#### All Posts
+
+![All posts screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/All_Posts.png)
+
+#### Post Details
+
+![Post Details screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/post_details.png)
+
+#### My Posts
+
+![My Post screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/my_posts.png)
+
+#### Create Post
+
+![Create Post screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/create_post.png)
+
+### Mobile Screenshots
+
+#### Register
+
+![Register screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/register.jpg)
+
+#### Login
+
+![Login screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/login.jpg)
+
+#### All Posts
+
+![All posts screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/All_Posts.jpg)
+
+#### Post Details
+
+![Post Details screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/post_details.jpg)
+
+#### My Posts
+
+![My Post screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/my_posts.jpg)
+
+#### Navbar
+
+![Navbar screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/navbar.jpg)
+
+---
 
 ## 🚀 Tech Stack
 
@@ -184,8 +232,8 @@ Pillow>=9.0.0
 
 ## 📧 Contact
 
-My Email - baishant005@gmail.com
---
+## My Email - baishant005@gmail.com
+
 Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baishant01/WriteShot--Blogging-with-Visuals.git)
 
 ## 🙏 Acknowledgments
@@ -205,14 +253,3 @@ Project Link: [https://github.com/Baishant01/writeshot](https://github.com/Baish
 - [ ] Add comments functionality
 - [ ] Add post categories/tags
 - [ ] Add search feature
-
-
-
-
-
-
-
-
-
-
-
