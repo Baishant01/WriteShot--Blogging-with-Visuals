@@ -1,4 +1,4 @@
-# WriteShot - A Django Blog Application
+í# WriteShot - A Django Blog Application
 
 A full-featured blog application built with Django that allows users to create, read, update, and delete blog posts with image uploads and user authentication.
 
@@ -44,6 +44,8 @@ A full-featured blog application built with Django that allows users to create, 
 ![Create Post screenshot](Demo%20Workflow%20Screenshots/desktop_screenshots/create_post.png)
 
 ### Mobile Screenshots
+<details>
+<summary>Click to view mobile screenshots</summary>
 
 #### Register
 
@@ -68,7 +70,7 @@ A full-featured blog application built with Django that allows users to create, 
 #### Navbar
 
 ![Navbar screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/navbar_mobile.jpg)
-
+</details>
 ---
 
 ## 🚀 Tech Stack
