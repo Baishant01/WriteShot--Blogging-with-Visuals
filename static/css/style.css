@@ -1,0 +1,112 @@
+:root {
+  --navbar-height: 70px;
+  --footer-height: 60px;
+}
+
+body {
+  min-height: 100vh;
+  padding-top: var(--navbar-height);
+  padding-bottom: var(--footer-height);
+}
+
+.bg-brand {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/*************** Navbar Section ************************/
+
+/* WriteShot logo */
+.logo {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* mobile hamburger menu btn */
+.menu-btn {
+  border: none;
+  padding: 5px;
+}
+
+/* menu btn icon  */
+.menu-btn > span {
+  filter: invert(1);
+}
+
+/* profile pic wrapper */
+.navbar-profile-container {
+  background: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #007bff;
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  /* Center profile picture on mobile */
+  .navbar-nav .nav-item:has(div) {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+/*************** Post List Section ************************/
+
+.post-card {
+  height: 600px;
+}
+
+.post-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 991px) {
+  .post-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 780px) {
+  .post-card-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* card-top-img */
+.card-top-img {
+  object-fit: contain;
+}
+
+/*************** Post Details Section ************************/
+
+.post-img {
+  max-width: 90%;
+}
+
+/* ************************************************** */
+/*************** accounts app ************************/
+/* ************************************************** */
+
+.register-container {
+  max-width: 600px;
+}
