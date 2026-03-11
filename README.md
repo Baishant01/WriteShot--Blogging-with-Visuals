@@ -55,7 +55,7 @@ A full-featured blog application built with Django that allows users to create, 
 
 #### All Posts
 
-![All posts screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/All_Posts.jpg)
+![All posts screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/all_posts.jpg)
 
 #### Post Details
 
@@ -67,7 +67,7 @@ A full-featured blog application built with Django that allows users to create, 
 
 #### Navbar
 
-![Navbar screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/navbar.jpg)
+![Navbar screenshot](Demo%20Workflow%20Screenshots/mobile_screenshots/navbar_mobile.jpg)
 
 ---
 
