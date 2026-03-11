@@ -4,6 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="{% block meta_description %}A blog about Django, Python, and web development - sharing code, tutorials, and project experiences.{% endblock meta_description %}">
+        <meta name="keywords"
+              content="django blog, python web development, coding tutorials, programmer blog">
         <title>
             {% block title %}
                 WriteShot
@@ -14,21 +18,7 @@
               rel="stylesheet">
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <style>
-        :root {
-            --navbar-height: 70px;
-            --footer-height: 60px;
-        }
-        
-        body {
-            padding-top: var(--navbar-height);
-            padding-bottom: var(--footer-height);
-        }
-
-        .bg-brand {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body class="d-flex flex-column min-vh-100">
         {% include "blog_app/includes/navbar.html" %}
