@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block title %}
     Post Details
@@ -6,20 +6,17 @@
 {% block content %}
     <div class="container mt-4 mb-5">
         <!-- Back Button -->
-        <a href="{% url 'post_list' %}" class="btn btn-light mb-4">
-            <i class="bi bi-arrow-left"></i>
-            Back
-        </a>
+        <a href="{% url 'post_list' %}" class="btn btn-light mb-4">{% include "includes/back_btn.html" %}</a>
         {% if post %}
             <div class="card p-4">
                 <div class="card-title text-center">
                     {% if post.image and post.image.url %}
                         <div class="d-flex justify-content-center">
                             <img src="{{ post.image.url }}"
-                                 style="max-height: 400px;
-                                        width: auto;
-                                        max-width:90%"
-                                 alt="">
+                                 alt="profile-image"
+                                 height="auto"
+                                 width="auto"
+                                 class="post-img">
                         </div>
                     {% endif %}
                     <br>
@@ -33,9 +30,7 @@
                              height="40"
                              width="40"
                              alt="{{ post.author.username }}"
-                             style="border-radius:50%;
-                                    margin-left:8px;
-                                    object-fit: cover">
+                             class="object-fit-cover rounded-circle">
                         <div>
                             <span>By {{ post.author }}</span>
                             <br>
@@ -67,8 +62,7 @@
                                         <img src="{% if comment.user.profile.profile_pic %}{{ comment.user.profile.profile_pic.url }}{% else %}{% static 'images/DefaultProfilePic.png' %}{% endif %}"
                                              height="30"
                                              width="30"
-                                             style="border-radius:50%;
-                                                    object-fit:cover"
+                                             class="object-fit-cover rounded-circle"
                                              alt="{{ comment.user.username }}">
                                         <div>
                                             <strong>{{ comment.user.username }}</strong>

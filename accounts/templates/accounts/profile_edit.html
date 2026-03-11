@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div>
+        <a href="{% url 'profile_view' %}" class="btn btn-light mb-4">{% include "includes/back_btn.html" %}</a>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Current Profile Pic:</h2>
+            <div class="bg-primary d-flex justify-content-center align-items-center"
+                 style="height:210px;
+                        width:210px">
+                {% if profile.profile_pic %}
+                    <img src="{{ profile.profile_pic.url }}"
+                         height="auto"
+                         width="200px"
+                         alt="profile-pic"
+                         class="object-fit-contain"
+                         style="aspect-ratio:1">
+                {% else %}
+                    <img src="{% static 'images/DefaultProfilePic.png' %}"
+                         height="auto"
+                         width="200px"
+                         alt="profile-pic">
+                {% endif %}
+            </div>
+            <hr>
+            <div>
+                <label for="id_profile_pic" class="form-label">Choose Profile Pic:</label>
+                <input type="file"
+                       name="profile_pic"
+                       accept="image/*"
+                       id="id_profile_pic"
+                       class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

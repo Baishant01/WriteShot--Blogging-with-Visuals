@@ -22,64 +22,62 @@
             {% endfor %}
         {% endif %}
         {% if page_obj %}
-            <div class="row">
+            <div class="post-card-grid mb-4">
                 {% for post in page_obj %}
-                    <div class="col-md-4 mb-4">
-                        <div class="card post-card" style="height:550px;">
-                            {% if post.image %}
+                    <div class="card post-card">
+                        {% if post.image %}
+                            <div class="post-img mx-auto w-100 pt-2">
                                 <img src="{{ post.image.url }}"
                                      height="180"
-                                     width="auto"
+                                     width="100%"
                                      alt=""
-                                     class="card-img-top"
-                                     style="object-fit: cover">
-                            {% endif %}
-                            <div class="card-body d-flex flex-column justify-content-between">
-                                <div class="upper-card-body">
-                                    <h5 class="card-title text-center">{{ post.title }}</h5>
-                                    <hr>
-                                    <div class="card-text d-flex align-items-center gap-4">
-                                        <img src="  {% if post.author.profile.profile_pic %} {{ post.author.profile.profile_pic.url }} {% else %} {% static 'images/DefaultProfilePic.png' %} {% endif %}  "
-                                             height="40"
-                                             width="40"
-                                             alt="{{ post.author.username }}"
-                                             style="border-radius:50%;
-                                                    margin-left:8px;
-                                                    object-fit: cover">
-                                        <div>
-                                            By {{ post.author }}
-                                            <br>
-                                            {{ post.created_at|date:"M d, Y" }}
-                                        </div>
+                                     class="card-top-img object-fit-cover">
+                            </div>
+                        {% endif %}
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div class="upper-card-body">
+                                <h5 class="card-title text-center">{{ post.title }}</h5>
+                                <hr>
+                                <div class="card-text d-flex align-items-center gap-4">
+                                    <img src="  {% if post.author.profile.profile_pic %} {{ post.author.profile.profile_pic.url }} {% else %} {% static 'images/DefaultProfilePic.png' %} {% endif %}  "
+                                         height="40"
+                                         width="40"
+                                         alt="{{ post.author.username }}"
+                                         class="rounded-circle">
+                                    <div>
+                                        By {{ post.author }}
+                                        <br>
+                                        {{ post.created_at|date:"M d, Y" }}
                                     </div>
-                                    <hr>
-                                    <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
                                 </div>
-                                <div class="lower-card-body">
-                                    <a href="{% url 'post_details' post.pk post.title %}"
-                                       class="btn btn-sm btn-outline-primary w-100 fw-bold">Read</a>
-                                    <div class="likecomment-container mt-2 d-flex justify-content-between gap-4">
-                                        {% if user.is_authenticated %}
-                                            <form action="{% url 'toggle_like' post.id %}" method="post">
-                                                {% csrf_token %}
-                                                <button type="submit" class="btn btn-outline-primary">
-                                                    <i class="bi bi-hand-thumbs-up-fill"></i>
-                                                    {{ post.likes.count }} Likes
-                                                </button>
-                                            </form>
-                                            <a href="{% url 'post_details' post.pk post.title %}#comments"
-                                               class="btn btn-outline-primary flex-fill">
-                                                <i class="bi bi-chat-dots"></i>
-                                            Comment</a>
-                                        {% else %}
-                                            <a href="{% url 'login' %}" class="btn btn-outline-secondary flex-fill">
-                                                <i class="bi bi-hand-thumbs-up"></i>Like
-                                            </a>
-                                            <a href="{% url 'login' %}" class="btn btn-outline-secondary flex-fill">
-                                                <i class="bi bi-chat-dots"></i>
-                                            Comment</a>
-                                        {% endif %}
-                                    </div>
+                                <hr>
+                                <p class="card-text r-just">{{ post.content|truncatewords:20 }}</p>
+                            </div>
+                            <div class="lower-card-body">
+                                <a href="{% url 'post_details' post.pk post.title %}"
+                                   class="btn btn-sm btn-outline-primary w-100 fw-bold">Read</a>
+                                <div class="likecomment-container mt-2 d-flex justify-content-between gap-4">
+                                    {% if user.is_authenticated %}
+                                        <form action="{% url 'toggle_like' post.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-outline-primary">
+                                                <i class="bi bi-hand-thumbs-up-fill"></i>
+                                                {{ post.likes.count }} Likes
+                                            </button>
+                                        </form>
+                                        <a href="{% url 'post_details' post.pk post.title %}#comments"
+                                           class="btn btn-outline-primary flex-fill">
+                                            <i class="bi bi-chat-dots"></i>
+                                        Comment</a>
+                                    {% else %}
+                                        <a href="{% url 'login' %}"
+                                           class="btn btn-outline-secondary flex-fill">
+                                            <i class="bi bi-hand-thumbs-up"></i>Like
+                                        </a>
+                                        <a href="{% url 'login' %}?next={% url 'post_details' post.id post.title %}#comments" class="btn btn-outline-secondary flex-fill">
+                                            <i class="bi bi-chat-dots"></i>
+                                        Comment</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
